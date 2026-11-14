@@ -4,7 +4,7 @@ Scope: new papers only. The old 66-item set (dataset_all.json) stays frozen and
 had no written rules, so old and new numbers are not strictly comparable.
 
 ## Files
-- PDFs: papers_new/ (not committed). Items: eval/new/dataset_new.json (draft) ->
+- PDFs: eval/new/papers_new/ (not committed). Items: eval/new/dataset_new.json (draft) ->
   eval/new/dataset_new_frozen.json (after freeze). Never touch dataset_all.json.
 
 ## Item fields
