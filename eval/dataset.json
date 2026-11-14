@@ -1,0 +1,86 @@
+[
+  {
+    "id": "q01",
+    "document": "sample_paper.pdf",
+    "question": "What model architecture relies entirely on an attention mechanism without recurrence?",
+    "expected_page_numbers": [1],
+    "expected_keywords": ["Transformer", "attention mechanism"]
+  },
+  {
+    "id": "q02",
+    "document": "sample_paper.pdf",
+    "question": "What were dominant sequence transduction models based on prior to the Transformer?",
+    "expected_page_numbers": [1],
+    "expected_keywords": ["recurrent", "convolutional"]
+  },
+  {
+    "id": "q03",
+    "document": "sample_paper.pdf",
+    "question": "Which neural architectures were established as state of the art in sequence modeling?",
+    "expected_page_numbers": [1],
+    "expected_keywords": ["long short-term memory", "gated recurrent"]
+  },
+  {
+    "id": "q04",
+    "document": "sample_paper.pdf",
+    "question": "How does the Transformer draw global dependencies between input and output?",
+    "expected_page_numbers": [1],
+    "expected_keywords": ["attention mechanism", "dependencies"]
+  },
+  {
+    "id": "q05",
+    "document": "sample_paper.pdf",
+    "question": "What general structural design do competitive sequence transduction models use?",
+    "expected_page_numbers": [2, 1],
+    "expected_keywords": ["encoder-decoder"]
+  },
+  {
+    "id": "q06",
+    "document": "sample_paper.pdf",
+    "question": "What does the encoder map an input sequence of symbol representations to?",
+    "expected_page_numbers": [2],
+    "expected_keywords": ["continuous representations", "z1"]
+  },
+  {
+    "id": "q07",
+    "document": "sample_paper.pdf",
+    "question": "How is an attention function mathematically described in terms of mapping?",
+    "expected_page_numbers": [2],
+    "expected_keywords": ["query", "key-value pairs"]
+  },
+  {
+    "id": "q08",
+    "document": "sample_paper.pdf",
+    "question": "What vector representations are involved in the attention function output?",
+    "expected_page_numbers": [2],
+    "expected_keywords": ["query", "keys", "values"]
+  },
+  {
+    "id": "q09",
+    "document": "sample_paper.pdf",
+    "question": "Who authored Attention Is All You Need and what conference was it published in?",
+    "expected_page_numbers": [2],
+    "expected_keywords": ["Vaswani", "NeurIPS"]
+  },
+  {
+    "id": "q10",
+    "document": "sample_paper.pdf",
+    "question": "What continuous representations (z1 through zn) are produced by the encoder?",
+    "expected_page_numbers": [2],
+    "expected_keywords": ["encoder", "continuous representations"]
+  },
+  {
+    "id": "q11",
+    "document": "sample_paper.pdf",
+    "question": "Does the Transformer architecture eschew recurrence in sequence transduction?",
+    "expected_page_numbers": [1],
+    "expected_keywords": ["eschewing recurrence", "Transformer"]
+  },
+  {
+    "id": "q12",
+    "document": "sample_paper.pdf",
+    "question": "What role do gated recurrent neural networks play in sequence transduction problems?",
+    "expected_page_numbers": [1],
+    "expected_keywords": ["gated recurrent", "transduction"]
+  }
+]

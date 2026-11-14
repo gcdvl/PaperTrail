@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PaperTrail Evaluation Dataset v2",
+  "description": "Ground-truth evaluation items for passage-level retrieval with evidence phrase verification.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "document", "question", "answerable", "expected_page_numbers", "evidence_phrase"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Unique identifier for the evaluation item."
+      },
+      "document": {
+        "type": "string",
+        "description": "Filename of the target PDF document (must exist in papers/ folder or project root)."
+      },
+      "question": {
+        "type": "string",
+        "description": "The question to retrieve evidence for."
+      },
+      "answerable": {
+        "type": "boolean",
+        "description": "True if the question is answerable from the document, false otherwise."
+      },
+      "expected_page_numbers": {
+        "type": "array",
+        "items": { "type": "integer", "minimum": 1 },
+        "description": "1-based page numbers where the answer can be found. Empty array when answerable is false."
+      },
+      "evidence_phrase": {
+        "description": "A short exact string that appears in the correct passage on the expected page. Null when answerable is false.",
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          { "type": "null" }
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "if": {
+      "properties": { "answerable": { "const": true } }
+    },
+    "then": {
+      "properties": {
+        "expected_page_numbers": { "minItems": 1 },
+        "evidence_phrase": { "type": "string", "minLength": 1 }
+      }
+    },
+    "else": {
+      "properties": {
+        "expected_page_numbers": { "maxItems": 0 },
+        "evidence_phrase": { "const": null }
+      }
+    }
+  }
+}

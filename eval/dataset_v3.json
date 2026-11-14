@@ -1,0 +1,137 @@
+[
+  {
+    "id": "attn-01",
+    "document": "attention.pdf",
+    "question": "What is the total number of attention heads utilized in the standard Transformer baseline?",
+    "answerable": true,
+    "expected_page_numbers": [5],
+    "evidence_phrase": "employ h = 8 parallel attention layers",
+    "notes": "Paraphrased question referring to the base Transformer model hyperparameter h."
+  },
+  {
+    "id": "attn-02",
+    "document": "attention.pdf",
+    "question": "How long was the standard translation architecture trained on the hardware setup before completion?",
+    "answerable": true,
+    "expected_page_numbers": [7],
+    "evidence_phrase": "base models for a total of 100,000 steps or 12 hours",
+    "notes": "Paraphrased question using alternative vocabulary regarding base model training time."
+  },
+  {
+    "id": "attn-03",
+    "document": "attention.pdf",
+    "question": "Which mathematical scaling term is applied to prevent small gradients in dot-product attention calculations?",
+    "answerable": true,
+    "expected_page_numbers": [4],
+    "evidence_phrase": "scale the dot products by",
+    "notes": "Paraphrased question about the scaling factor."
+  },
+  {
+    "id": "attn-04",
+    "document": "attention.pdf",
+    "question": "What primary advantage does self-attention offer regarding the maximum computational distance between token representations?",
+    "answerable": true,
+    "expected_page_numbers": [6],
+    "evidence_phrase": "connects all positions with a constant number of sequentially executed operations",
+    "notes": "Paraphrased question addressing path length and sequential operations."
+  },
+  {
+    "id": "attn-05",
+    "document": "attention.pdf",
+    "question": "What BLEU score did the large configuration achieve on the English-to-German evaluation dataset?",
+    "answerable": true,
+    "expected_page_numbers": [8],
+    "evidence_phrase": "establishing a new state-of-the-art BLEU score of 28.4",
+    "notes": "Paraphrased question asking for the Transformer (big) EN-DE BLEU result."
+  },
+  {
+    "id": "attn-06",
+    "document": "attention.pdf",
+    "question": "What label smoothing coefficient value was incorporated to regularize model predictions during training?",
+    "answerable": true,
+    "expected_page_numbers": [8],
+    "evidence_phrase": "employed label smoothing of value",
+    "notes": "Paraphrased question about regularization hyperparameters."
+  },
+  {
+    "id": "attn-07",
+    "document": "attention.pdf",
+    "question": "How many sentences were contained in the English-French training corpus?",
+    "answerable": true,
+    "expected_page_numbers": [7],
+    "evidence_phrase": "WMT 2014 English-French dataset consisting of 36M sentences",
+    "notes": "Paraphrased question about dataset size."
+  },
+  {
+    "id": "attn-08",
+    "document": "attention.pdf",
+    "question": "Which specific layer of the encoder shows attention mechanisms handling long-range dependency parsing for verb structures?",
+    "answerable": true,
+    "expected_page_numbers": [13],
+    "evidence_phrase": "encoder self-attention in layer 5 of 6",
+    "notes": "Paraphrased question referencing Figure 3 from later pages of the paper."
+  },
+  {
+    "id": "attn-u01",
+    "document": "attention.pdf",
+    "question": "What GPU memory capacity in gigabytes was required to train the big Transformer model?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Plausible technical question, but GPU VRAM capacity is not mentioned in the paper."
+  },
+  {
+    "id": "attn-u02",
+    "document": "attention.pdf",
+    "question": "What batch size in terms of total sentence pairs was used during beam search inference?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Plausible inference setup detail, but sentence pair batching during beam search decoding is omitted."
+  },
+  {
+    "id": "attn-u03",
+    "document": "attention.pdf",
+    "question": "What was the inference latency in milliseconds per sentence on a single P100 GPU?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Plausible performance benchmark, but per-sentence generation latency is not reported."
+  },
+  {
+    "id": "attn-u04",
+    "document": "attention.pdf",
+    "question": "What exact weight decay parameter was set for the Adam optimizer during base Transformer training?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Plausible hyperparameter detail, but weight decay value is not specified in the optimizer section."
+  },
+  {
+    "id": "attn-u05",
+    "document": "attention.pdf",
+    "question": "What percentage of training time was saved by using FP16 mixed-precision floating-point arithmetic?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Plausible hardware acceleration metric, but mixed-precision/FP16 training is not discussed."
+  },
+  {
+    "id": "attn-u06",
+    "document": "attention.pdf",
+    "question": "What was the human evaluation fluency score for the English-to-German translations produced by the big Transformer model?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Plausible translation quality assessment, but human evaluation fluency scores are absent."
+  },
+  {
+    "id": "attn-u07",
+    "document": "attention.pdf",
+    "question": "How many total layers were used in the decoder stack for the constituency parsing task?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Plausible architectural detail; while a 4-layer model is noted, separate decoder stack depth for parsing is omitted."
+  }
+]

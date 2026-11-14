@@ -1,0 +1,21 @@
+# Ignore env files and cache
+.env
+.cache/
+papers_new/
+
+papers/
+*.pdf
+eval/results/
+a1.txt
+a1b.json
+a3.json
+e?.json
+q?.json
+out*.txt
+raw.txt
+PROJECT_EXPLANATION.txt
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/

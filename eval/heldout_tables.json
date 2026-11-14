@@ -1,0 +1,217 @@
+[
+  {
+    "id": "attn-table-01",
+    "doc": "attention.pdf",
+    "question": "What is the per-layer computational complexity for a Convolutional layer according to Table 1?",
+    "answer": "O(k · n · d^2)",
+    "page": 6,
+    "table": 1,
+    "row_label": "Convolutional",
+    "column_header": "Complexity per Layer",
+    "must_contain": [
+      "Convolutional",
+      "O(k · n · d2)"
+    ]
+  },
+  {
+    "id": "attn-table-02",
+    "doc": "attention.pdf",
+    "question": "What BLEU score did the ByteNet [18] model achieve on the EN-DE task in Table 2?",
+    "answer": "23.75",
+    "page": 8,
+    "table": 2,
+    "row_label": "ByteNet [18]",
+    "column_header": "BLEU EN-DE",
+    "must_contain": [
+      "ByteNet",
+      "23.75"
+    ]
+  },
+  {
+    "id": "attn-table-03",
+    "doc": "attention.pdf",
+    "question": "According to Table 3, what is the parameter count (params x 10^6) for the Transformer (big) model?",
+    "answer": "213",
+    "page": 9,
+    "table": 3,
+    "row_label": "big",
+    "column_header": "params x10^6",
+    "must_contain": [
+      "big",
+      "213"
+    ]
+  },
+  {
+    "id": "attn-table-04",
+    "doc": "attention.pdf",
+    "question": "In Table 2, which model achieves a higher BLEU score on the EN-DE task between Transformer (base model) and Transformer (big), and by how much?",
+    "answer": "Transformer (big) is higher by 1.1 BLEU points (28.4 vs 27.3)",
+    "page": 8,
+    "table": 2,
+    "row_label": "Transformer (base model) / Transformer (big)",
+    "column_header": "BLEU EN-DE",
+    "must_contain": [
+      "Transformer",
+      "27.3",
+      "28.4"
+    ]
+  },
+  {
+    "id": "attn-table-05",
+    "doc": "attention.pdf",
+    "question": "In Table 4, comparing the WSJ only discriminative models, which parser achieves a higher WSJ 23 F1 score between Petrov et al. (2006) and Dyer et al. (2016), and by how much?",
+    "answer": "Dyer et al. (2016) is higher by 1.3 F1 points (91.7 vs 90.4)",
+    "page": 10,
+    "table": 4,
+    "row_label": "Petrov et al. (2006) [29] / Dyer et al. (2016) [8]",
+    "column_header": "WSJ 23 F1",
+    "must_contain": [
+      "Petrov",
+      "90.4",
+      "Dyer",
+      "91.7"
+    ]
+  },
+  {
+    "id": "bert-table-01",
+    "doc": "bert.pdf",
+    "question": "What is the GLUE Test score (accuracy) for BERT BASE on the SST-2 dataset in Table 1?",
+    "answer": "93.5",
+    "page": 6,
+    "table": 1,
+    "row_label": "BERT BASE",
+    "column_header": "SST-2",
+    "must_contain": [
+      "93.5"
+    ]
+  },
+  {
+    "id": "bert-table-02",
+  "doc": "bert.pdf",
+  "question": "In Table 4, what accuracy was achieved by the baseline ESIM+ELMo system on the SWAG Dev dataset?",
+  "answer": "59.1",
+  "page": 7,
+  "table": 4,
+  "row_label": "ESIM+ELMo",
+  "column_header": "Dev",
+  "must_contain": ["ESIM+ELMo",
+  "59.1"
+]
+  },
+  {
+    "id": "bert-table-03",
+    "doc": "bert.pdf",
+    "question": "According to Table 7, what Dev F1 score was recorded for the feature-based approach using 'Second-to-Last Hidden' layer activations on CoNLL-2003 NER?",
+    "answer": "95.6",
+    "page": 9,
+    "table": 7,
+    "row_label": "Second-to-Last Hidden",
+    "column_header": "Dev F1",
+    "must_contain": [
+      "Second-to-Last Hidden",
+      "95.6"
+    ]
+  },
+  {
+    "id": "bert-table-04",
+    "doc": "bert.pdf",
+    "question": "In Table 1, comparing the average GLUE scores of BERT BASE and BERT LARGE, which model achieves a higher average score and by how many points?",
+    "answer": "BERT LARGE is higher by 2.5 points (82.1 vs 79.6)",
+    "page": 6,
+    "table": 1,
+    "row_label": "BERT BASE / BERT LARGE",
+    "column_header": "Average",
+    "must_contain": [
+      "79.6",
+      "82.1"
+    ]
+  },
+  {
+    "id": "bert-table-05",
+    "doc": "bert.pdf",
+    "question": "In Table 6, comparing the BERT model with hyperparameter configuration (#L=6, #H=768, #A=12) against (#L=12, #H=768, #A=12), which configuration achieves a higher Dev Set Accuracy on MNLI-m and by how much?",
+    "answer": "The (#L=12, #H=768, #A=12) configuration is higher by 2.5 percentage points (84.4 vs 81.9)",
+    "page": 9,
+    "table": 6,
+    "row_label": "6 / 768 / 12 vs 12 / 768 / 12",
+    "column_header": "MNLI-m",
+    "must_contain": [
+      "81.9",
+      "84.4"
+    ]
+  },
+  {
+    "id": "drs-table-01",
+    "doc": "drs.pdf",
+    "question": "What top-1 validation error percentage was recorded for the 34-layer plain network architecture on ImageNet in Table 2?",
+    "answer": "28.54%",
+    "page": 5,
+    "table": 2,
+    "row_label": "34 layers",
+    "column_header": "plain",
+    "must_contain": [
+      "34 layers",
+      "28.54"
+    ]
+  },
+  {
+    "id": "drs-table-02",
+    "doc": "drs.pdf",
+    "question": "According to Table 6, what is the test error percentage for the ResNet-32 model on CIFAR-10?",
+    "answer": "7.51%",
+    "page": 7,
+    "table": 6,
+    "row_label": "ResNet-32",
+    "column_header": "error (%)",
+    "must_contain": [
+      "7.51",
+      "ResNet",
+      "32"
+    ]
+  },
+  {
+    "id": "drs-table-03",
+    "doc": "drs.pdf",
+    "question": "In Table 10, what mAP did the baseline Faster R-CNN with ResNet-101 achieve on PASCAL VOC 2007 test?",
+    "answer": "76.4",
+    "page": 11,
+    "table": 11,
+    "row_label": "baseline ResNet-101",
+    "column_header": "mAP",
+    "must_contain": [
+      "ResNet-101",
+      "07+12",
+      "76.4"
+    ]
+  },
+  {
+    "id": "drs-table-04",
+    "doc": "drs.pdf",
+    "question": "In Table 2, comparing the top-1 validation error rates on ImageNet between the 34-layer plain network and the 34-layer ResNet, which achieves lower error and by how much?",
+    "answer": "The 34-layer ResNet is lower by 3.51 percentage points (25.03% vs 28.54%)",
+    "page": 5,
+    "table": 2,
+    "row_label": "34 layers",
+    "column_header": "plain / ResNet",
+    "must_contain": [
+      "34 layers",
+      "28.54",
+      "25.03"
+    ]
+  },
+  {
+    "id": "drs-table-05",
+    "doc": "drs.pdf",
+    "question": "In Table 6, comparing the CIFAR-10 test error rates of ResNet-20 and ResNet-56, which architecture achieves lower test error and by how much?",
+    "answer": "ResNet-56 achieves lower error by 1.78 percentage points (6.97% vs 8.75%)",
+    "page": 7,
+    "table": 6,
+    "row_label": "ResNet-20 / ResNet-56",
+    "column_header": "error (%)",
+    "must_contain": [
+      "ResNet",
+      "8.75",
+      "6.97"
+    ]
+  }
+]

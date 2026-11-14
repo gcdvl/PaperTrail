@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaperTrail</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      padding: 1.5rem 1rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 1rem;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+    }
+    .tagline {
+      color: #475569;
+      font-size: 1rem;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+    .card-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #1e293b;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #334155;
+      margin-bottom: 0.375rem;
+    }
+    select, input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: #0f172a;
+      background: #ffffff;
+    }
+    select:focus, input[type="text"]:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+    input[type="file"] {
+      padding: 0.375rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #ffffff;
+      background-color: #2563eb;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out;
+    }
+    .btn:hover:not(:disabled) {
+      background-color: #1d4ed8;
+    }
+    .btn:disabled {
+      background-color: #94a3b8;
+      cursor: not-allowed;
+    }
+    .btn-row {
+      margin-top: 0.75rem;
+    }
+    .error-msg {
+      margin-top: 0.75rem;
+      color: #dc2626;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .banner {
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid transparent;
+    }
+    .status-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .banner h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+    /* Answered state */
+    .answered-banner {
+      background-color: #f0fdf4;
+      border-color: #bbf7d0;
+      color: #166534;
+    }
+    .answered-badge {
+      background-color: #bbf7d0;
+      color: #14532d;
+    }
+    .answered-box {
+      background: #ffffff;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 0.75rem;
+      color: #1f2937;
+    }
+    /* Not found state */
+    .not-found-banner {
+      background-color: #fffbeb;
+      border-color: #fef3c7;
+      color: #92400e;
+    }
+    .not-found-badge {
+      background-color: #fde68a;
+      color: #78350f;
+    }
+    /* Error state */
+    .error-banner {
+      background-color: #fef2f2;
+      border-color: #fecaca;
+      color: #991b1b;
+    }
+    .error-badge {
+      background-color: #fecaca;
+      color: #7f1d1d;
+    }
+    .evidence-section {
+      margin-top: 1.25rem;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1rem;
+    }
+    .evidence-section h3 {
+      font-size: 1.05rem;
+      color: #1e293b;
+      margin-bottom: 0.25rem;
+    }
+    .evidence-note {
+      font-size: 0.8125rem;
+      color: #64748b;
+      margin-bottom: 0.75rem;
+    }
+    .citation-box {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .citation-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+    .passage-text {
+      white-space: pre-wrap;
+      max-height: 220px;
+      overflow-y: auto;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 0.625rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      color: #334155;
+    }
+    .retrieved-details {
+      margin-top: 0.75rem;
+      background: #ffffff;
+      border: 1px solid #fde68a;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+    }
+    .retrieved-details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #78350f;
+      outline: none;
+    }
+    .retrieved-item {
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed #fef3c7;
+      font-size: 0.875rem;
+      color: #451a03;
+    }
+    .retrieved-item strong {
+      color: #78350f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>PaperTrail</h1>
+      <p class="tagline">Answers you can verify: every answer cites the exact passage and page.</p>
+    </header>
+
+    <div class="card" id="document-card">
+      <div class="card-title">1. Select or Upload Document</div>
+      <div class="form-group">
+        <label for="doc-select">Available Documents</label>
+        <select id="doc-select">
+          <option value="">-- No documents uploaded --</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-top: 1rem;">
+        <label for="pdf-file-input">Upload New PDF</label>
+        <input type="file" id="pdf-file-input" accept=".pdf,application/pdf">
+        <div class="btn-row">
+          <button type="button" class="btn" id="upload-btn">Upload PDF</button>
+        </div>
+      </div>
+      <div id="upload-error" class="error-msg"></div>
+    </div>
+
+    <div class="card" id="question-card">
+      <div class="card-title">2. Ask a Question</div>
+      <div class="form-group">
+        <label for="question-input">Question (max 1000 characters)</label>
+        <input type="text" id="question-input" maxlength="1000" placeholder="Ask a question about the selected paper..." disabled>
+        <div class="btn-row">
+          <button type="button" class="btn" id="ask-btn" disabled>Ask</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="result-area" aria-live="polite"></div>
+  </div>
+
+  <script>
+    (function() {
+      const docSelect = document.getElementById("doc-select");
+      const fileInput = document.getElementById("pdf-file-input");
+      const uploadBtn = document.getElementById("upload-btn");
+      const uploadError = document.getElementById("upload-error");
+      const questionInput = document.getElementById("question-input");
+      const askBtn = document.getElementById("ask-btn");
+      const resultArea = document.getElementById("result-area");
+
+      const docsMap = new Map();
+
+      function clearElement(el) {
+        while (el.firstChild) {
+          el.removeChild(el.firstChild);
+        }
+      }
+
+      function updateQuestionCardState() {
+        const hasSelection = Boolean(docSelect.value);
+        questionInput.disabled = !hasSelection;
+        askBtn.disabled = !hasSelection;
+      }
+
+      function showUploadError(message) {
+        clearElement(uploadError);
+        const p = document.createElement("p");
+        p.textContent = message;
+        uploadError.appendChild(p);
+      }
+
+      function clearUploadError() {
+        clearElement(uploadError);
+      }
+
+      function showResultBanner(type, titleText, bodyText, badgeText) {
+        clearElement(resultArea);
+        const banner = document.createElement("div");
+        banner.className = "banner " + type + "-banner";
+
+        const badge = document.createElement("span");
+        badge.className = "status-badge " + type + "-badge";
+        badge.textContent = badgeText;
+        banner.appendChild(badge);
+
+        if (titleText) {
+          const h = document.createElement("h3");
+          h.textContent = titleText;
+          banner.appendChild(h);
+        }
+
+        if (bodyText) {
+          const p = document.createElement("p");
+          p.textContent = bodyText;
+          banner.appendChild(p);
+        }
+
+        resultArea.appendChild(banner);
+        return banner;
+      }
+
+      async function loadDocuments(selectDocId) {
+        try {
+          const res = await fetch("/documents");
+          if (!res.ok) {
+            return;
+          }
+          const docs = await res.json();
+          docsMap.clear();
+          clearElement(docSelect);
+
+          if (!docs || docs.length === 0) {
+            const opt = document.createElement("option");
+            opt.value = "";
+            opt.textContent = "-- No documents uploaded --";
+            docSelect.appendChild(opt);
+          } else {
+            docs.forEach(function(d) {
+              docsMap.set(d.doc_id, d);
+              const opt = document.createElement("option");
+              opt.value = d.doc_id;
+              opt.textContent = d.filename + " (" + d.total_pages + " pages)";
+              docSelect.appendChild(opt);
+            });
+          }
+
+          if (selectDocId && docsMap.has(selectDocId)) {
+            docSelect.value = selectDocId;
+          } else if (docs && docs.length > 0) {
+            docSelect.value = docs[0].doc_id;
+          }
+
+          updateQuestionCardState();
+        } catch (_) {}
+      }
+
+      async function handleUpload() {
+        clearUploadError();
+        const files = fileInput.files;
+        if (!files || files.length === 0) {
+          showUploadError("Please select a PDF file to upload.");
+          return;
+        }
+
+        uploadBtn.disabled = true;
+        uploadBtn.textContent = "Indexing...";
+
+        const formData = new FormData();
+        formData.append("file", files[0]);
+
+        try {
+          const res = await fetch("/documents", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (!res.ok) {
+            let errorMsg = "Something went wrong.";
+            if (res.status === 413) {
+              errorMsg = "File too large (max 25 MB).";
+            } else {
+              try {
+                const errData = await res.json();
+                if (errData && typeof errData.detail === "string") {
+                  errorMsg = errData.detail;
+                }
+              } catch (_) {}
+            }
+            showUploadError(errorMsg);
+            return;
+          }
+
+          const created = await res.json();
+          fileInput.value = "";
+          await loadDocuments(created.doc_id);
+        } catch (netErr) {
+          showUploadError("Cannot reach the server.");
+        } finally {
+          uploadBtn.disabled = false;
+          uploadBtn.textContent = "Upload PDF";
+        }
+      }
+
+      async function handleAsk() {
+        const docId = docSelect.value;
+        if (!docId) {
+          return;
+        }
+
+        const q = questionInput.value.trim();
+        if (!q) {
+          showResultBanner("error", "Invalid Question", "The question is empty or longer than 1000 characters.", "Request Error");
+          return;
+        }
+
+        clearElement(resultArea);
+        askBtn.disabled = true;
+        askBtn.textContent = "Searching the paper... this can take up to a minute on the free tier.";
+
+        try {
+          const res = await fetch("/documents/" + encodeURIComponent(docId) + "/ask", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ question: q }),
+          });
+
+          if (!res.ok) {
+            let errorMsg = "Something went wrong.";
+            if (res.status === 404) {
+              errorMsg = "Document not found. The server may have restarted, please upload again.";
+            } else if (res.status === 422) {
+              errorMsg = "The question is empty or longer than 1000 characters.";
+            } else if (res.status === 413) {
+              errorMsg = "File too large (max 25 MB).";
+            } else {
+              try {
+                const errData = await res.json();
+                if (errData && typeof errData.detail === "string") {
+                  errorMsg = errData.detail;
+                }
+              } catch (_) {}
+            }
+            showResultBanner("error", "Error", errorMsg, "Request Error");
+            return;
+          }
+
+          const data = await res.json();
+          renderResponse(data, docId);
+        } catch (netErr) {
+          showResultBanner("error", "Connection Error", "Cannot reach the server.", "Network Error");
+        } finally {
+          askBtn.disabled = false;
+          askBtn.textContent = "Ask";
+        }
+      }
+
+      function renderResponse(data, docId) {
+        clearElement(resultArea);
+        const status = data.status;
+        const currentDoc = docsMap.get(docId);
+        const docFilename = currentDoc ? currentDoc.filename : "Document";
+
+        if (status === "answered") {
+          const banner = document.createElement("div");
+          banner.className = "banner answered-banner";
+
+          const badge = document.createElement("span");
+          badge.className = "status-badge answered-badge";
+          badge.textContent = "Status: Answered";
+          banner.appendChild(badge);
+
+          const answerBox = document.createElement("div");
+          answerBox.className = "answered-box";
+          const answerP = document.createElement("p");
+          answerP.textContent = data.answer || "";
+          answerBox.appendChild(answerP);
+          banner.appendChild(answerBox);
+
+          if (Array.isArray(data.citations) && data.citations.length > 0) {
+            const evidenceSec = document.createElement("div");
+            evidenceSec.className = "evidence-section";
+
+            const evHeading = document.createElement("h3");
+            evHeading.textContent = "Evidence";
+            evidenceSec.appendChild(evHeading);
+
+            const evNote = document.createElement("p");
+            evNote.className = "evidence-note";
+            evNote.textContent = "Passage text is copied from the PDF by the server, not generated by the model.";
+            evidenceSec.appendChild(evNote);
+
+            data.citations.forEach(function(cit) {
+              const citBox = document.createElement("div");
+              citBox.className = "citation-box";
+
+              const citTitle = document.createElement("div");
+              citTitle.className = "citation-title";
+              citTitle.textContent = docFilename + " - page " + cit.page;
+              citBox.appendChild(citTitle);
+
+              const passDiv = document.createElement("div");
+              passDiv.className = "passage-text";
+              passDiv.textContent = cit.text || "";
+              citBox.appendChild(passDiv);
+
+              evidenceSec.appendChild(citBox);
+            });
+
+            banner.appendChild(evidenceSec);
+          }
+
+          resultArea.appendChild(banner);
+        } else if (status === "not_found") {
+          const banner = document.createElement("div");
+          banner.className = "banner not-found-banner";
+
+          const badge = document.createElement("span");
+          badge.className = "status-badge not-found-badge";
+          badge.textContent = "Status: Not Found";
+          banner.appendChild(badge);
+
+          const h = document.createElement("h3");
+          h.textContent = "Not found in the paper";
+          banner.appendChild(h);
+
+          const p = document.createElement("p");
+          p.textContent = "The model did not find an answer in the passages retrieved. The search can also miss relevant text, so check the passages below.";
+          banner.appendChild(p);
+
+          if (Array.isArray(data.retrieved) && data.retrieved.length > 0) {
+            const details = document.createElement("details");
+            details.className = "retrieved-details";
+
+            const summary = document.createElement("summary");
+            summary.textContent = "Passages that were searched (top 5)";
+            details.appendChild(summary);
+
+            data.retrieved.forEach(function(item) {
+              const itemDiv = document.createElement("div");
+              itemDiv.className = "retrieved-item";
+
+              const strong = document.createElement("strong");
+              strong.textContent = "page " + item.page + " ";
+              itemDiv.appendChild(strong);
+
+              const span = document.createElement("span");
+              span.textContent = item.text || "";
+              itemDiv.appendChild(span);
+
+              details.appendChild(itemDiv);
+            });
+
+            banner.appendChild(details);
+          }
+
+          resultArea.appendChild(banner);
+        } else if (status === "error") {
+          const banner = document.createElement("div");
+          banner.className = "banner error-banner";
+
+          const badge = document.createElement("span");
+          badge.className = "status-badge error-badge";
+          badge.textContent = "Status: Model Parse Error";
+          banner.appendChild(badge);
+
+          const h = document.createElement("h3");
+          h.textContent = "Could not read the model's answer";
+          banner.appendChild(h);
+
+          const p = document.createElement("p");
+          p.textContent = "Please try asking again.";
+          banner.appendChild(p);
+
+          resultArea.appendChild(banner);
+        }
+      }
+
+      uploadBtn.addEventListener("click", handleUpload);
+      askBtn.addEventListener("click", handleAsk);
+      docSelect.addEventListener("change", updateQuestionCardState);
+      questionInput.addEventListener("keydown", function(e) {
+        if (e.key === "Enter" && !askBtn.disabled) {
+          handleAsk();
+        }
+      });
+
+      loadDocuments();
+    })();
+  </script>
+</body>
+</html>
+

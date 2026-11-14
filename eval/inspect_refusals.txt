@@ -1,0 +1,724 @@
+================================================================================
+ITEM ID: attn-14
+QUESTION: In the model variation experiments, what development BLEU score was observed when substituting sinusoidal encodings with learned positional representations?
+EVIDENCE PHRASE: (E) positional embedding instead of sinusoids 4.92 25.7
+
+TOP-5 RETRIEVED CHUNKS (rank order):
+  Rank 1: attention.pdf::p6::c2 (score 12.1556)
+  Full text:
+3.5
+Positional Encoding
+Since our model contains no recurrence and no convolution, in order for the model to make use of the
+order of the sequence, we must inject some information about the relative or absolute position of the
+tokens in the sequence. To this end, we add "positional encodings" to the input embeddings at the
+bottoms of the encoder and decoder stacks. The positional encodings have the same dimension dmodel
+as the embeddings, so that the two can be summed. There are many choices of positional encodings,
+learned and fixed [9]. In this work, we use sine and cosine functions of different frequencies:
+PE(pos,2i) = sin(pos/100002i/dmodel)
+PE(pos,2i+1) = cos(pos/100002i/dmodel)
+where pos is the position and i is the dimension. That is, each dimension of the positional encoding
+corresponds to a sinusoid. The wavelengths form a geometric progression from 2π to 10000 · 2π.
+
+  Rank 2: attention.pdf::p9::c2 (score 10.3665)
+  Full text:
+We present these results in Table 3. In Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,
+keeping the amount of computation constant, as described in Section 3.2.2. While single-head
+attention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads. In Table 3 rows (B), we observe that reducing the attention key size dk hurts model quality. This
+suggests that determining compatibility is not easy and that a more sophisticated compatibility
+function than dot product may be beneficial. We further observe in rows (C) and (D) that, as expected,
+bigger models are better, and dropout is very helpful in avoiding over-fitting. In row (E) we replace our
+sinusoidal positional encoding with learned positional embeddings [9], and observe nearly identical
+results to the base model.
+
+  Rank 3: attention.pdf::p6::c3 (score 9.3178)
+  Full text:
+We
+chose this function because we hypothesized it would allow the model to easily learn to attend by
+relative positions, since for any fixed offset k, PEpos+k can be represented as a linear function of
+PEpos. We also experimented with using learned positional embeddings [9] instead, and found that the two
+versions produced nearly identical results (see Table 3 row (E)). We chose the sinusoidal version
+because it may allow the model to extrapolate to sequence lengths longer than the ones encountered
+during training.
+
+  Rank 4: attention.pdf::p1::c2 (score 8.6545)
+  Full text:
+Abstract
+The dominant sequence transduction models are based on complex recurrent or
+convolutional neural networks that include an encoder and a decoder. The best
+performing models also connect the encoder and decoder through an attention
+mechanism. We propose a new simple network architecture, the Transformer,
+based solely on attention mechanisms, dispensing with recurrence and convolutions
+entirely. Experiments on two machine translation tasks show these models to
+be superior in quality while being more parallelizable and requiring significantly
+less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-
+to-German translation task, improving over the existing best results, including
+ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,
+our model establishes a new single-model state-of-the-art BLEU score of 41.8 after
+training for 3.5 days on eight GPUs, a small fraction of the training costs of the
+best models from the literature.
+
+  Rank 5: attention.pdf::p9::c4 (score 8.4688)
+  Full text:
+We performed only a small number of experiments to select the dropout, both attention and residual
+(section 5.4), learning rates and beam size on the Section 22 development set, all other parameters
+remained unchanged from the English-to-German base translation model. During inference, we
+9
+
+EVIDENCE PHRASE CHUNK LOCATIONS:
+  attention.pdf::p9::c1 — BM25 rank: 8
+
+================================================================================
+ITEM ID: bert-02
+QUESTION: Which specific vocabulary algorithm and size were selected for processing text units?
+EVIDENCE PHRASE: WordPiece embeddings (Wu et al., 2016) with a 30,000 token vocabulary
+
+TOP-5 RETRIEVED CHUNKS (rank order):
+  Rank 1: bert.pdf::p8::c7 (score 8.1254)
+  Full text:
+5.2
+Effect of Model Size
+In this section, we explore the effect of model size
+on fine-tuning task accuracy. We trained a number
+of BERT models with a differing number of layers,
+hidden units, and attention heads, while otherwise
+using the same hyperparameters and training pro-
+cedure as described previously. Results on selected GLUE tasks are shown in
+Table 6. In this table, we report the average Dev
+Set accuracy from 5 random restarts of fine-tuning. We can see that larger models lead to a strict ac-
+curacy improvement across all four datasets, even
+for MRPC which only has 3,600 labeled train-
+ing examples, and is substantially different from
+the pre-training tasks. It is also perhaps surpris-
+ing that we are able to achieve such significant
+improvements on top of models which are al-
+ready quite large relative to the existing literature. For example, the largest Transformer explored in
+Vaswani et al.
+
+  Rank 2: bert.pdf::p5::c3 (score 6.2291)
+  Full text:
+3.2
+Fine-tuning BERT
+Fine-tuning is straightforward since the self-
+attention mechanism in the Transformer al-
+lows BERT to model many downstream tasks—
+whether they involve single text or text pairs—by
+swapping out the appropriate inputs and outputs. For applications involving text pairs, a common
+pattern is to independently encode text pairs be-
+fore applying bidirectional cross attention, such
+as Parikh et al. (2016); Seo et al. (2017). BERT
+instead uses the self-attention mechanism to unify
+these two stages, as encoding a concatenated text
+pair with self-attention effectively includes bidi-
+rectional cross attention between two sentences. For each task, we simply plug in the task-
+specific inputs and outputs into BERT and fine-
+tune all the parameters end-to-end.
+
+  Rank 3: bert.pdf::p9::c1 (score 5.5164)
+  Full text:
+mixed results on the downstream task impact of
+increasing the pre-trained bi-LM size from two
+to four layers and Melamud et al. (2016) men-
+tioned in passing that increasing hidden dimen-
+sion size from 200 to 600 helped, but increasing
+further to 1,000 did not bring further improve-
+ments. Both of these prior works used a feature-
+based approach — we hypothesize that when the
+model is fine-tuned directly on the downstream
+tasks and uses only a very small number of ran-
+domly initialized additional parameters, the task-
+specific models can benefit from the larger, more
+expressive pre-trained representations even when
+downstream task data is very small.
+
+  Rank 4: bert.pdf::p10::c6 (score 5.4676)
+  Full text:
+2018. Maskgan: Better text generation via filling in
+the . arXiv preprint arXiv:1801.07736. Dan Hendrycks and Kevin Gimpel. 2016. Bridging
+nonlinearities and stochastic regularizers with gaus-
+sian error linear units. CoRR, abs/1606.08415. Felix Hill, Kyunghyun Cho, and Anna Korhonen. 2016. Learning distributed representations of sentences
+from unlabelled data. In Proceedings of the 2016
+Conference of the North American Chapter of the
+Association for Computational Linguistics: Human
+Language Technologies. Association for Computa-
+tional Linguistics. Jeremy Howard and Sebastian Ruder. 2018. Universal
+language model fine-tuning for text classification. In
+ACL. Association for Computational Linguistics. Minghao Hu, Yuxing Peng, Zhen Huang, Xipeng Qiu,
+Furu Wei, and Ming Zhou. 2018. Reinforced
+mnemonic reader for machine reading comprehen-
+sion. In IJCAI. Yacine Jernite, Samuel R. Bowman, and David Son-
+tag. 2017.
+
+  Rank 5: bert.pdf::p6::c5 (score 5.4139)
+  Full text:
+82.1
+Table 1: GLUE Test results, scored by the evaluation server (https://gluebenchmark.com/leaderboard). The number below each task denotes the number of training examples. The “Average” column is slightly different
+than the official GLUE score, since we exclude the problematic WNLI set.8 BERT and OpenAI GPT are single-
+model, single task. F1 scores are reported for QQP and MRPC, Spearman correlations are reported for STS-B, and
+accuracy scores are reported for the other tasks. We exclude entries that use BERT as one of their components. We use a batch size of 32 and fine-tune for 3
+epochs over the data for all GLUE tasks. For each
+task, we selected the best fine-tuning learning rate
+(among 5e-5, 4e-5, 3e-5, and 2e-5) on the Dev set. Additionally, for BERTLARGE we found that fine-
+tuning was sometimes unstable on small datasets,
+so we ran several random restarts and selected the
+best model on the Dev set.
+
+EVIDENCE PHRASE CHUNK LOCATIONS:
+  bert.pdf::p4::c1 — BM25 rank: 7
+
+================================================================================
+ITEM ID: bert-11
+QUESTION: In the pre-training task ablation study, what exact accuracy was recorded on the SST-2 dataset when removing the next sentence prediction objective?
+EVIDENCE PHRASE: No NSP 83.9 84.9 86.5 92.6 87.9
+
+TOP-5 RETRIEVED CHUNKS (rank order):
+  Rank 1: bert.pdf::p8::c3 (score 14.5951)
+  Full text:
+84.9
+Table 5: Ablation over the pre-training tasks using the
+BERTBASE architecture. “No NSP” is trained without
+the next sentence prediction task. “LTR & No NSP” is
+trained as a left-to-right LM without the next sentence
+prediction, like OpenAI GPT. “+ BiLSTM” adds a ran-
+domly initialized BiLSTM on top of the “LTR + No
+NSP” model during fine-tuning.
+ablation studies can be found in Appendix C.
+
+  Rank 2: bert.pdf::p16::c3 (score 13.6825)
+  Full text:
+2. Question: Does MLM pre-training converge
+slower than LTR pre-training, since only 15%
+of words are predicted in each batch rather
+than every word?
+Answer: The MLM model does converge
+slightly slower than the LTR model. How-
+ever, in terms of absolute accuracy the MLM
+model begins to outperform the LTR model
+almost immediately.
+C.2
+Ablation for Different Masking
+Procedures
+In Section 3.1, we mention that BERT uses a
+mixed strategy for masking the target tokens when
+pre-training with the masked language model
+(MLM) objective. The following is an ablation
+study to evaluate the effect of different masking
+strategies.
+200
+400
+600
+800
+1,000
+76
+78
+80
+82
+
+  Rank 3: bert.pdf::p8::c4 (score 12.4785)
+  Full text:
+5.1
+Effect of Pre-training Tasks
+We demonstrate the importance of the deep bidi-
+rectionality of BERT by evaluating two pre-
+training objectives using exactly the same pre-
+training data, fine-tuning scheme, and hyperpa-
+rameters as BERTBASE:
+No NSP: A bidirectional model which is trained
+using the “masked LM” (MLM) but without the
+“next sentence prediction” (NSP) task. LTR & No NSP: A left-context-only model which
+is trained using a standard Left-to-Right (LTR)
+LM, rather than an MLM. The left-only constraint
+was also applied at fine-tuning, because removing
+it introduced a pre-train/fine-tune mismatch that
+degraded downstream performance. Additionally,
+this model was pre-trained without the NSP task. This is directly comparable to OpenAI GPT, but
+using our larger training dataset, our input repre-
+sentation, and our fine-tuning scheme. We first examine the impact brought by the NSP
+task.
+
+  Rank 4: bert.pdf::p4::c5 (score 8.7813)
+  Full text:
+The training data generator
+chooses 15% of the token positions at random for
+prediction. If the i-th token is chosen, we replace
+the i-th token with (1) the [MASK] token 80% of
+the time (2) a random token 10% of the time (3)
+the unchanged i-th token 10% of the time. Then,
+Ti will be used to predict the original token with
+cross entropy loss. We compare variations of this
+procedure in Appendix C.2. Task #2:
+Next Sentence Prediction (NSP)
+Many important downstream tasks such as Ques-
+tion Answering (QA) and Natural Language Infer-
+ence (NLI) are based on understanding the rela-
+tionship between two sentences, which is not di-
+rectly captured by language modeling. In order
+to train a model that understands sentence rela-
+tionships, we pre-train for a binarized next sen-
+tence prediction task that can be trivially gener-
+ated from any monolingual corpus.
+
+  Rank 5: bert.pdf::p13::c2 (score 8.7767)
+  Full text:
+In Section C.1 we demonstrate that
+MLM does converge marginally slower than a left-
+to-right model (which predicts every token), but
+the empirical improvements of the MLM model
+far outweigh the increased training cost. Next Sentence Prediction
+The next sentence
+prediction task can be illustrated in the following
+examples. Input = [CLS] the man went to [MASK] store [SEP]
+he bought a gallon [MASK] milk [SEP]
+Label = IsNext
+Input = [CLS] the man [MASK] to the store [SEP]
+penguin [MASK] are flight ##less birds [SEP]
+Label = NotNext
+A.2
+Pre-training Procedure
+To generate each training input sequence, we sam-
+ple two spans of text from the corpus, which we
+refer to as “sentences” even though they are typ-
+ically much longer than single sentences (but can
+be shorter also). The first sentence receives the A
+embedding and the second receives the B embed-
+ding.
+
+EVIDENCE PHRASE CHUNK LOCATIONS:
+  bert.pdf::p8::c2 — BM25 rank: no query-token overlap (cannot be retrieved at any top_k)
+
+================================================================================
+ITEM ID: drs-05
+QUESTION: What floating-point operation count is needed for the 34-layer plain architecture?
+EVIDENCE PHRASE: 3.6 billion FLOPs
+
+TOP-5 RETRIEVED CHUNKS (rank order):
+  Rank 1: drs.pdf::p4::c7 (score 5.9853)
+  Full text:
+4. Experiments
+
+4.1. ImageNet Classification
+We evaluate our method on the ImageNet 2012 classifi-
+cation dataset [36] that consists of 1000 classes. The models
+are trained on the 1.28 million training images, and evalu-
+ated on the 50k validation images. We also obtain a final
+result on the 100k test images, reported by the test server.
+We evaluate both top-1 and top-5 error rates.
+Plain Networks. We first evaluate 18-layer and 34-layer
+plain nets. The 34-layer plain net is in Fig. 3 (middle). The
+18-layer plain net is of a similar form. See Table 1 for de-
+tailed architectures.
+The results in Table 2 show that the deeper 34-layer plain
+net has higher validation error than the shallower 18-layer
+plain net. To reveal the reasons, in Fig. 4 (left) we com-
+pare their training/validation errors during the training pro-
+cedure. We have observed the degradation problem - the
+4
+
+  Rank 2: drs.pdf::p5::c5 (score 5.9695)
+  Full text:
+25.03
+Table 2. Top-1 error (%, 10-crop testing) on ImageNet validation. Here the ResNets have no extra parameter compared to their plain
+counterparts. Fig. 4 shows the training procedures. 34-layer plain net has higher training error throughout the
+whole training procedure, even though the solution space
+of the 18-layer plain network is a subspace of that of the
+34-layer one. We argue that this optimization difficulty is unlikely to
+be caused by vanishing gradients. These plain networks are
+trained with BN [16], which ensures forward propagated
+signals to have non-zero variances. We also verify that the
+backward propagated gradients exhibit healthy norms with
+BN. So neither forward nor backward signals vanish. In
+fact, the 34-layer plain net is still able to achieve compet-
+itive accuracy (Table 3), suggesting that the solver works
+to some extent. We conjecture that the deep plain nets may
+have exponentially low convergence rates, which impact the
+reducing of the training error3.
+
+  Rank 3: drs.pdf::p5::c4 (score 5.9555)
+  Full text:
+ResNet-18
+ResNet-34
+18-layer
+34-layer
+18-layer
+34-layer
+Figure 4. Training on ImageNet. Thin curves denote training error, and bold curves denote validation error of the center crops. Left: plain
+networks of 18 and 34 layers. Right: ResNets of 18 and 34 layers. In this plot, the residual networks have no extra parameter compared to
+their plain counterparts.
+plain
+ResNet
+18 layers
+27.94
+27.88
+34 layers
+28.54
+
+  Rank 4: drs.pdf::p5::c7 (score 5.2233)
+  Full text:
+Second, compared to its plain counterpart, the 34-layer
+3We have experimented with more training iterations (3×) and still ob-
+served the degradation problem, suggesting that this problem cannot be
+feasibly addressed by simply using more iterations. 5
+
+  Rank 5: drs.pdf::p5::c6 (score 4.6996)
+  Full text:
+The reason for such opti-
+mization difficulties will be studied in the future. Residual Networks. Next we evaluate 18-layer and 34-
+layer residual nets (ResNets). The baseline architectures
+are the same as the above plain nets, expect that a shortcut
+connection is added to each pair of 3×3 filters as in Fig. 3
+(right). In the first comparison (Table 2 and Fig. 4 right),
+we use identity mapping for all shortcuts and zero-padding
+for increasing dimensions (option A). So they have no extra
+parameter compared to the plain counterparts. We have three major observations from Table 2 and
+Fig. 4. First, the situation is reversed with residual learn-
+ing – the 34-layer ResNet is better than the 18-layer ResNet
+(by 2.8%). More importantly, the 34-layer ResNet exhibits
+considerably lower training error and is generalizable to the
+validation data. This indicates that the degradation problem
+is well addressed in this setting and we manage to obtain
+accuracy gains from increased depth.
+
+EVIDENCE PHRASE CHUNK LOCATIONS:
+  drs.pdf::p3::c9 — BM25 rank: no query-token overlap (cannot be retrieved at any top_k)
+  drs.pdf::p4::c3 — BM25 rank: 15
+
+================================================================================
+ITEM ID: drs-09
+QUESTION: What top-1 accuracy error rate was registered on the ImageNet validation set by the 34-layer residual model using option B shortcut projections?
+EVIDENCE PHRASE: ResNet-34 B 24.52 7.46
+
+TOP-5 RETRIEVED CHUNKS (rank order):
+  Rank 1: drs.pdf::p6::c4 (score 17.8381)
+  Full text:
+6.71
+ResNet-101
+21.75
+
+6.05
+ResNet-152
+21.43
+
+5.71
+Table 3. Error rates (%, 10-crop testing) on ImageNet validation.
+VGG-16 is based on our test. ResNet-50/101/152 are of option B
+that only uses projections for increasing dimensions.
+method
+top-1 err.
+top-5 err.
+VGG [41] (ILSVRC’14)
+-
+8.43†
+GoogLeNet [44] (ILSVRC’14)
+-
+
+  Rank 2: drs.pdf::p5::c6 (score 13.0233)
+  Full text:
+The reason for such opti-
+mization difficulties will be studied in the future. Residual Networks. Next we evaluate 18-layer and 34-
+layer residual nets (ResNets). The baseline architectures
+are the same as the above plain nets, expect that a shortcut
+connection is added to each pair of 3×3 filters as in Fig. 3
+(right). In the first comparison (Table 2 and Fig. 4 right),
+we use identity mapping for all shortcuts and zero-padding
+for increasing dimensions (option A). So they have no extra
+parameter compared to the plain counterparts. We have three major observations from Table 2 and
+Fig. 4. First, the situation is reversed with residual learn-
+ing – the 34-layer ResNet is better than the 18-layer ResNet
+(by 2.8%). More importantly, the 34-layer ResNet exhibits
+considerably lower training error and is generalizable to the
+validation data. This indicates that the degradation problem
+is well addressed in this setting and we manage to obtain
+accuracy gains from increased depth.
+
+  Rank 3: drs.pdf::p7::c1 (score 12.9627)
+  Full text:
+34-layer net with this 3-layer bottleneck block, resulting in
+a 50-layer ResNet (Table 1). We use option B for increasing
+dimensions. This model has 3.8 billion FLOPs. 101-layer and 152-layer ResNets: We construct 101-
+layer and 152-layer ResNets by using more 3-layer blocks
+(Table 1). Remarkably, although the depth is significantly
+increased, the 152-layer ResNet (11.3 billion FLOPs) still
+has lower complexity than VGG-16/19 nets (15.3/19.6 bil-
+lion FLOPs). The 50/101/152-layer ResNets are more accurate than
+the 34-layer ones by considerable margins (Table 3 and 4). We do not observe the degradation problem and thus en-
+joy significant accuracy gains from considerably increased
+depth. The benefits of depth are witnessed for all evaluation
+metrics (Table 3 and 4). Comparisons with State-of-the-art Methods. In Table 4
+we compare with the previous best single-model results. Our baseline 34-layer ResNets have achieved very compet-
+itive accuracy.
+
+  Rank 4: drs.pdf::p5::c5 (score 11.0039)
+  Full text:
+25.03
+Table 2. Top-1 error (%, 10-crop testing) on ImageNet validation. Here the ResNets have no extra parameter compared to their plain
+counterparts. Fig. 4 shows the training procedures. 34-layer plain net has higher training error throughout the
+whole training procedure, even though the solution space
+of the 18-layer plain network is a subspace of that of the
+34-layer one. We argue that this optimization difficulty is unlikely to
+be caused by vanishing gradients. These plain networks are
+trained with BN [16], which ensures forward propagated
+signals to have non-zero variances. We also verify that the
+backward propagated gradients exhibit healthy norms with
+BN. So neither forward nor backward signals vanish. In
+fact, the 34-layer plain net is still able to achieve compet-
+itive accuracy (Table 3), suggesting that the solver works
+to some extent. We conjecture that the deep plain nets may
+have exponentially low convergence rates, which impact the
+reducing of the training error3.
+
+  Rank 5: drs.pdf::p4::c3 (score 10.9326)
+  Full text:
+Example network architectures for ImageNet. Left: the
+VGG-19 model [41] (19.6 billion FLOPs) as a reference. Mid-
+dle: a plain network with 34 parameter layers (3.6 billion FLOPs). Right: a residual network with 34 parameter layers (3.6 billion
+FLOPs). The dotted shortcuts increase dimensions. Table 1 shows
+more details and other variants. Residual Network. Based on the above plain network, we
+insert shortcut connections (Fig. 3, right) which turn the
+network into its counterpart residual version. The identity
+shortcuts (Eqn.(1)) can be directly used when the input and
+output are of the same dimensions (solid line shortcuts in
+Fig. 3). When the dimensions increase (dotted line shortcuts
+in Fig. 3), we consider two options: (A) The shortcut still
+performs identity mapping, with extra zero entries padded
+for increasing dimensions. This option introduces no extra
+parameter; (B) The projection shortcut in Eqn.(2) is used to
+match dimensions (done by 1×1 convolutions).
+
+EVIDENCE PHRASE CHUNK LOCATIONS:
+  drs.pdf::p6::c3 — BM25 rank: 40
+
+================================================================================
+ITEM ID: drs-10
+QUESTION: What total parameter count is required by the 110-layer deep architecture designed for the CIFAR-10 experiment?
+EVIDENCE PHRASE: ResNet 110 1.7M
+
+TOP-5 RETRIEVED CHUNKS (rank order):
+  Rank 1: drs.pdf::p7::c11 (score 5.2569)
+  Full text:
+6 (left) shows the behaviors of the
+plain nets. The deep plain nets suffer from increased depth,
+and exhibit higher training error when going deeper. This
+phenomenon is similar to that on ImageNet (Fig. 4, left) and
+on MNIST (see [42]), suggesting that such an optimization
+difficulty is a fundamental problem. Fig. 6 (middle) shows the behaviors of ResNets. Also
+similar to the ImageNet cases (Fig. 4, right), our ResNets
+manage to overcome the optimization difficulty and demon-
+strate accuracy gains when the depth increases. We further explore n = 18 that leads to a 110-layer
+ResNet. In this case, we find that the initial learning rate
+of 0.1 is slightly too large to start converging5. So we use
+0.01 to warm up the training until the training error is below
+80% (about 400 iterations), and then go back to 0.1 and con-
+tinue training. The rest of the learning schedule is as done
+previously. This 110-layer network converges well (Fig. 6,
+middle).
+
+  Rank 2: drs.pdf::p8::c2 (score 4.9646)
+  Full text:
+ResNet-20
+ResNet-32
+ResNet-44
+ResNet-56
+ResNet-110
+56-layer
+20-layer
+110-layer
+20-layer
+4
+5
+6
+0
+1
+5
+10
+20
+iter. (1e4)
+error (%)
+
+  Rank 3: drs.pdf::p8::c7 (score 4.8816)
+  Full text:
+When there are more
+layers, an individual layer of ResNets tends to modify the
+signal less. Exploring Over 1000 layers. We explore an aggressively
+deep model of over 1000 layers. We set n = 200 that
+leads to a 1202-layer network, which is trained as described
+above. Our method shows no optimization difficulty, and
+this 103-layer network is able to achieve training error
+<0.1% (Fig. 6, right). Its test error is still fairly good
+(7.93%, Table 6). But there are still open problems on such aggressively
+deep models. The testing result of this 1202-layer network
+is worse than that of our 110-layer network, although both
+training data
+07+12
+07++12
+test data
+VOC 07 test
+VOC 12 test
+VGG-16
+73.2
+
+  Rank 4: drs.pdf::p7::c4 (score 4.6638)
+  Full text:
+There are totally 6n+2 stacked weighted
+layers. The following table summarizes the architecture:
+output map size
+32×32
+16×16
+8×8
+# layers
+1+2n
+2n
+2n
+# filters
+16
+32
+
+  Rank 5: drs.pdf::p7::c3 (score 4.2069)
+  Full text:
+4.2. CIFAR-10 and Analysis
+We conducted more studies on the CIFAR-10 dataset
+[20], which consists of 50k training images and 10k test-
+ing images in 10 classes. We present experiments trained
+on the training set and evaluated on the test set. Our focus
+is on the behaviors of extremely deep networks, but not on
+pushing the state-of-the-art results, so we intentionally use
+simple architectures as follows. The plain/residual architectures follow the form in Fig. 3
+(middle/right). The network inputs are 32×32 images, with
+the per-pixel mean subtracted. The first layer is 3×3 convo-
+lutions. Then we use a stack of 6n layers with 3×3 convo-
+lutions on the feature maps of sizes {32, 16, 8} respectively,
+with 2n layers for each feature map size. The numbers of
+filters are {16, 32, 64} respectively. The subsampling is per-
+formed by convolutions with a stride of 2. The network ends
+with a global average pooling, a 10-way fully-connected
+layer, and softmax.
+
+EVIDENCE PHRASE CHUNK LOCATIONS:
+  drs.pdf::p7::c9 — BM25 rank: no query-token overlap (cannot be retrieved at any top_k)
+
+================================================================================
+ITEM ID: drs-11
+QUESTION: What mean average precision score was achieved on the PASCAL VOC 2012 evaluation set when utilizing the baseline architecture paired with Faster R-CNN?
+EVIDENCE PHRASE: baseline ResNet-101 07++12 73.8
+
+TOP-5 RETRIEVED CHUNKS (rank order):
+  Rank 1: drs.pdf::p10::c3 (score 19.2730)
+  Full text:
+PASCAL VOC
+Following [7, 32], for the PASCAL VOC 2007 test set,
+we use the 5k trainval images in VOC 2007 and 16k train-
+val images in VOC 2012 for training (“07+12”). For the
+PASCAL VOC 2012 test set, we use the 10k trainval+test
+images in VOC 2007 and 16k trainval images in VOC 2012
+for training (“07++12”). The hyper-parameters for train-
+ing Faster R-CNN are the same as in [32]. Table 7 shows
+the results. ResNet-101 improves the mAP by >3% over
+VGG-16. This gain is solely because of the improved fea-
+tures learned by ResNet. MS COCO
+The MS COCO dataset [26] involves 80 object cate-
+gories. We evaluate the PASCAL VOC metric (mAP @
+IoU = 0.5) and the standard COCO metric (mAP @ IoU =
+.5:.05:.95). We use the 80k images on the train set for train-
+ing and the 40k images on the val set for evaluation. Our
+detection system for COCO is similar to that for PASCAL
+VOC.
+
+  Rank 2: drs.pdf::p8::c8 (score 15.4852)
+  Full text:
+70.4
+ResNet-101
+76.4
+
+73.8
+Table 7. Object detection mAP (%) on the PASCAL VOC
+2007/2012 test sets using baseline Faster R-CNN. See also Ta-
+ble 10 and 11 for better results.
+metric
+mAP@.5
+mAP@[.5, .95]
+VGG-16
+41.5
+
+  Rank 3: drs.pdf::p11::c6 (score 14.6489)
+  Full text:
+62.1
+Table 12. Our results (mAP, %) on the ImageNet detection dataset. Our detection system is Faster R-CNN [32] with the improvements
+in Table 9, using ResNet-101. we achieve 85.6% mAP on PASCAL VOC 2007 (Table 10)
+and 83.8% on PASCAL VOC 2012 (Table 11)6. The result
+on PASCAL VOC 2012 is 10 points higher than the previ-
+ous state-of-the-art result [6]. ImageNet Detection
+The ImageNet Detection (DET) task involves 200 object
+categories. The accuracy is evaluated by mAP@.5. Our
+object detection algorithm for ImageNet DET is the same
+as that for MS COCO in Table 9. The networks are pre-
+trained on the 1000-class ImageNet classification set, and
+are fine-tuned on the DET data. We split the validation set
+into two parts (val1/val2) following [8]. We fine-tune the
+detection models using the DET training set and the val1
+set. The val2 set is used for validation. We do not use other
+ILSVRC 2015 data.
+
+  Rank 4: drs.pdf::p8::c10 (score 11.3718)
+  Full text:
+4.3. Object Detection on PASCAL and MS COCO
+Our method has good generalization performance on
+other recognition tasks. Table 7 and 8 show the object de-
+tection baseline results on PASCAL VOC 2007 and 2012
+[5] and COCO [26]. We adopt Faster R-CNN [32] as the de-
+tection method. Here we are interested in the improvements
+of replacing VGG-16 [41] with ResNet-101. The detection
+implementation (see appendix) of using both models is the
+same, so the gains can only be attributed to better networks.
+Most remarkably, on the challenging COCO dataset we ob-
+tain a 6.0% increase in COCO’s standard metric (mAP@[.5,
+.95]), which is a 28% relative improvement. This gain is
+solely due to the learned representations.
+Based on deep residual nets, we won the 1st places in
+several tracks in ILSVRC & COCO 2015 competitions: Im-
+ageNet detection, ImageNet localization, COCO detection,
+and COCO segmentation. The details are in the appendix.
+8
+
+  Rank 5: drs.pdf::p11::c2 (score 9.4007)
+  Full text:
+37.4
+Table 9. Object detection improvements on MS COCO using Faster R-CNN and ResNet-101. system
+net
+data
+mAP
+areo
+bike
+bird
+boat
+bottle
+bus
+car
+cat
+chair
+cow
+table
+dog
+horse
+mbike person
+plant
+sheep
+sofa
+train
+tv
+baseline
+VGG-16
+07+12
+73.2
+76.5 79.0 70.9 65.5 52.1 83.1 84.7 86.4 52.0 81.9 65.7 84.8 84.6 77.5 76.7 38.8 73.6 73.9 83.0 72.6
+baseline
+ResNet-101
+07+12
+76.4
+79.8 80.7 76.2 68.3 55.9 85.1 85.3 89.8 56.7 87.8 69.4 88.3 88.9 80.9 78.4 41.7 78.6 79.8 85.3 72.0
+baseline+++ ResNet-101
+COCO+07+12
+85.6
+90.0 89.6 87.8 80.8 76.1 89.9 89.9 89.6 75.5 90.0 80.7 89.6 90.3 89.1 88.7 65.4 88.1 85.6 89.0 86.8
+Table 10. Detection results on the PASCAL VOC 2007 test set. The baseline is the Faster R-CNN system. The system “baseline+++”
+include box refinement, context, and multi-scale testing in Table 9.
+
+EVIDENCE PHRASE CHUNK LOCATIONS:
+  drs.pdf::p11::c3 — BM25 rank: 6

@@ -1,0 +1,30 @@
+Table-aware chunking experiment: rule written 2026-11-06, BEFORE the new
+chunker exists and written before the new chunker exists and before any held-out results with the new chunker are seen; old-chunker baseline recorded first (BM25 R@5 8/15, hybrid 6/15, dense 4/15).
+
+Held-out set: eval/heldout_tables.json (15 questions). A retrieved chunk is
+a HIT for a question if it comes from the right document and contains every
+must_contain string (case-insensitive substring), on any page. (drs-table-03
+has the same fact on pages 8 and 11; either page counts.)
+
+Adopt the table-aware chunker only if ALL hold:
+1. With the new-chunker flag OFF, the frozen-set results reproduce the M4
+   numbers exactly (BM25 44.4/71.1/73.3, hybrid 42.2/60.0/68.9, dense
+   24.4/44.4/62.2 passage R@1/R@3/R@5). If not, stop and debug.
+2. BM25 (the default retriever) held-out R@5 improves by at least 3
+   questions over the old chunker.
+3. Frozen-set BM25 passage R@5 on items whose evidence is NOT on a table
+   page drops by no more than 1 item.
+4. Frozen-set items whose evidence IS on a table page are reported
+   separately; any drop there is checked by hand, because the frozen
+   evidence labels depend on flattened text order.
+
+If held-out R@5 improves by 1-2 questions: inconclusive, do not adopt.
+No chunker changes after seeing held-out results. Further tuning requires
+new held-out questions. Report all numbers, including regressions, for
+BM25, dense and hybrid.
+
+Baseling : BM25 R@5 was 8/15 with the duplicate questions, and it is still 8/15 with the replacements.
+
+Note: two held-out questions were replaced after the first baseline run and before any new-chunker result: drs-table-03 and bert-table-02.
+
+Use the two frozen groups: the 11 table-evidence items (attn-10, attn-11, attn-14, bert-10, bert-11, bert-12, bert-14, drs-09, drs-10, drs-11, drs-13) and the other 34 answerable items.

@@ -1,0 +1,230 @@
+[
+  {
+    "id": "bert-01",
+    "document": "bert.pdf",
+    "question": "What is the total parameter count contained within the larger variant of the model?",
+    "answerable": true,
+    "expected_page_numbers": [
+      3
+    ],
+    "evidence_phrase": "Total Parameters=340M",
+    "notes": "BERT-Large parameter count."
+  },
+  {
+    "id": "bert-02",
+    "document": "bert.pdf",
+    "question": "Which specific vocabulary algorithm and size were selected for processing text units?",
+    "answerable": true,
+    "expected_page_numbers": [
+      4
+    ],
+    "evidence_phrase": "WordPiece embeddings (Wu et al., 2016) with a 30,000 token vocabulary",
+    "notes": "Token embedding vocabulary size."
+  },
+  {
+    "id": "bert-03",
+    "document": "bert.pdf",
+    "question": "How many total pre-training updates were executed during the initial training phase?",
+    "answerable": true,
+    "expected_page_numbers": [
+      13
+    ],
+    "evidence_phrase": "for 1,000,000 steps",
+    "notes": "Pre-training step count."
+  },
+  {
+    "id": "bert-04",
+    "document": "bert.pdf",
+    "question": "What proportion of tokens in each input sequence are selected for the masking procedure?",
+    "answerable": true,
+    "expected_page_numbers": [
+      4
+    ],
+    "evidence_phrase": "we mask 15% of all WordPiece",
+    "notes": "Masked LM masking percentage."
+  },
+  {
+    "id": "bert-05",
+    "document": "bert.pdf",
+    "question": "What test set F1 metric did the top single model reach on SQuAD v2.0?",
+    "answerable": true,
+    "expected_page_numbers": [
+      1
+    ],
+    "evidence_phrase": "SQUAD v2.0 Test F1 to 83.1",
+    "notes": "SQuAD 2.0 result from Abstract on page 1."
+  },
+  {
+    "id": "bert-06",
+    "document": "bert.pdf",
+    "question": "What non-linear activation function was used across the network layers instead of standard ReLU?",
+    "answerable": true,
+    "expected_page_numbers": [
+      13
+    ],
+    "evidence_phrase": "We use a gelu",
+    "notes": "Non-linear activation function choice."
+  },
+  {
+    "id": "bert-07",
+    "document": "bert.pdf",
+    "question": "How many TPU chips were employed to conduct the pre-training of the base model size?",
+    "answerable": true,
+    "expected_page_numbers": [
+      13
+    ],
+    "evidence_phrase": "Cloud TPUs in Pod",
+    "notes": "Hardware pod setup for base model."
+  },
+  {
+    "id": "bert-08",
+    "document": "bert.pdf",
+    "question": "Which combination of hidden layer outputs yielded the strongest F1 score in the feature extraction experiment for entity recognition?",
+    "answerable": true,
+    "expected_page_numbers": [
+      9
+    ],
+    "evidence_phrase": "token representations from the top four hidden",
+    "notes": "CoNLL-2003 NER feature-based ablation."
+  },
+  {
+    "id": "bert-09",
+    "document": "bert.pdf",
+    "question": "What sequence length was utilized during the initial 90% of pre-training steps to accelerate training throughput?",
+    "answerable": true,
+    "expected_page_numbers": [
+      13
+    ],
+    "evidence_phrase": "pre-train the model with sequence length of 128",
+    "notes": "Pre-training sequence length scheduling."
+  },
+  {
+    "id": "bert-10",
+    "document": "bert.pdf",
+    "question": "What dev set F1 score was achieved on SQuAD 1.1 by the single base model without pre-fine-tuning on TriviaQA?",
+    "answerable": true,
+    "expected_page_numbers": [
+      7
+    ],
+    "evidence_phrase": "BERTBASE (Single) 80.8 88.5",
+    "notes": "Table 2 SQuAD 1.1 base model result."
+  },
+  {
+    "id": "bert-11",
+    "document": "bert.pdf",
+    "question": "In the pre-training task ablation study, what exact accuracy was recorded on the SST-2 dataset when removing the next sentence prediction objective?",
+    "answerable": true,
+    "expected_page_numbers": [
+      8
+    ],
+    "evidence_phrase": "No NSP 83.9 84.9 86.5 92.6 87.9",
+    "notes": "Table 5 pre-training task ablation metric."
+  },
+  {
+    "id": "bert-12",
+    "document": "bert.pdf",
+    "question": "What masked language model perplexity score was attained by a 6-layer architecture with 768 hidden units and 12 heads on held-out data?",
+    "answerable": true,
+    "expected_page_numbers": [
+      9
+    ],
+    "evidence_phrase": "6 768 12 4.68 81.9 84.8 91.3",
+    "notes": "Table 6 model size ablation row."
+  },
+  {
+    "id": "bert-13",
+    "document": "bert.pdf",
+    "question": "What total word count from English Wikipedia was extracted to form part of the pre-training text corpus?",
+    "answerable": true,
+    "expected_page_numbers": [
+      5
+    ],
+    "evidence_phrase": "English Wikipedia (2,500M words)",
+    "notes": "Pre-training dataset source text size."
+  },
+  {
+    "id": "bert-14",
+    "document": "bert.pdf",
+    "question": "Which layer activations are extracted and concatenated to feed into the BiLSTM classifier for the feature-based CoNLL-2003 NER approach?",
+    "answerable": true,
+    "expected_page_numbers": [
+      9
+    ],
+    "evidence_phrase": "Concat Last Four Hidden",
+    "notes": "Table 7 feature extraction row."
+  },
+  {
+    "id": "bert-15",
+    "document": "bert.pdf",
+    "question": "How much does MNLI accuracy improve when the number of pre-training steps is doubled?",
+    "answerable": true,
+    "expected_page_numbers": [
+      16
+    ],
+    "evidence_phrase": "1.0% additional accuracy on MNLI when",
+    "notes": "text sentence on page 16 (Section C.1), not the figure"
+  },
+  {
+    "id": "bert-u01",
+    "document": "bert.pdf",
+    "question": "What was the total monetary cost in dollars required to run pre-training on Cloud TPUs?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Pre-training financial cost in dollars is absent."
+  },
+  {
+    "id": "bert-u02",
+    "document": "bert.pdf",
+    "question": "What specific Adam optimizer weight decay value was applied during fine-tuning on downstream GLUE tasks?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Fine-tuning weight decay value is omitted."
+  },
+  {
+    "id": "bert-u03",
+    "document": "bert.pdf",
+    "question": "How many total parameters were added to the architecture for the multi-choice classification head on SWAG?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Exact parameter count for the SWAG classifier head is not reported."
+  },
+  {
+    "id": "bert-u04",
+    "document": "bert.pdf",
+    "question": "What gradient clipping threshold value was applied to avoid exploding gradients during pre-training?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Gradient clipping threshold value is missing."
+  },
+  {
+    "id": "bert-u05",
+    "document": "bert.pdf",
+    "question": "What exact vocabulary coverage percentage was observed for out-of-vocabulary tokens when applying WordPiece tokenization?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Out-of-vocabulary coverage statistics are absent."
+  },
+  {
+    "id": "bert-u06",
+    "document": "bert.pdf",
+    "question": "What average inference speed in milliseconds per sentence was measured for the large model variant during GLUE evaluation?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Evaluation inference latency is not reported."
+  },
+  {
+    "id": "bert-u07",
+    "document": "bert.pdf",
+    "question": "How many total parameters were contained in the randomly initialized BiLSTM layer used for the feature-based NER baseline?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Exact BiLSTM parameter count is omitted."
+  }
+]

@@ -1,0 +1,231 @@
+[
+  {
+    "id": "drs-01",
+    "document": "drs.pdf",
+    "question": "What standard evaluation error rate was achieved on ImageNet by an ensemble of these deep architectures?",
+    "answerable": true,
+    "expected_page_numbers": [
+      1
+    ],
+    "evidence_phrase": "ensemble of these residual nets achieves 3.57% error",
+    "notes": "ILSVRC 2015 winning result."
+  },
+  {
+    "id": "drs-02",
+    "document": "drs.pdf",
+    "question": "What is the primary underlying cause identified when increased depth leads to higher training error in plain deep networks?",
+    "answerable": true,
+    "expected_page_numbers": [
+      1
+    ],
+    "evidence_phrase": "degradation problem has been exposed",
+    "notes": "Network degradation phenomenon."
+  },
+  {
+    "id": "drs-03",
+    "document": "drs.pdf",
+    "question": "How are residual mapping operations mathematically defined relative to the input and output functions?",
+    "answerable": true,
+    "expected_page_numbers": [
+      2
+    ],
+    "evidence_phrase": "underlying mapping as H(x), we let the stacked nonlinear",
+    "notes": "Residual mapping formulation."
+  },
+  {
+    "id": "drs-04",
+    "document": "drs.pdf",
+    "question": "What specific sequence of functional layers makes up a bottleneck residual block?",
+    "answerable": true,
+    "expected_page_numbers": [
+      6
+    ],
+    "evidence_phrase": "stack of 3 layers instead of 2",
+    "notes": "Bottleneck block architecture."
+  },
+  {
+    "id": "drs-05",
+    "document": "drs.pdf",
+    "question": "What floating-point operation count is needed for the 34-layer plain architecture?",
+    "answerable": true,
+    "expected_page_numbers": [
+      3,
+      4
+    ],
+    "evidence_phrase": "3.6 billion FLOPs",
+    "notes": "34-layer plain baseline FLOPs."
+  },
+  {
+    "id": "drs-06",
+    "document": "drs.pdf",
+    "question": "What special warm-up learning rate procedure was utilized to initiate training for the 110-layer CIFAR model?",
+    "answerable": true,
+    "expected_page_numbers": [
+      7
+    ],
+    "evidence_phrase": "use 0.01 to warm up the training until the training error is below 80%",
+    "notes": "ResNet-110 warm-up schedule on CIFAR-10."
+  },
+  {
+    "id": "drs-07",
+    "document": "drs.pdf",
+    "question": "What relative improvement in object recognition accuracy was demonstrated on the COCO benchmark by upgrading representations?",
+    "answerable": true,
+    "expected_page_numbers": [
+      1
+    ],
+    "evidence_phrase": "deep representations, we obtain a 28% relative",
+    "notes": "COCO object detection mAP improvement."
+  },
+  {
+    "id": "drs-08",
+    "document": "drs.pdf",
+    "question": "What strategy is implemented for Batch Normalization statistics during fine-tuning for detection tasks?",
+    "answerable": true,
+    "expected_page_numbers": [
+      10
+    ],
+    "evidence_phrase": "the BN statistics (means and variances) for each layer",
+    "notes": "Batch normalization parameter freezing strategy."
+  },
+  {
+    "id": "drs-09",
+    "document": "drs.pdf",
+    "question": "What top-1 accuracy error rate was registered on the ImageNet validation set by the 34-layer residual model using option B shortcut projections?",
+    "answerable": true,
+    "expected_page_numbers": [
+      6
+    ],
+    "evidence_phrase": "ResNet-34 B 24.52 7.46",
+    "notes": "Table 3 Option B ResNet-34 result."
+  },
+  {
+    "id": "drs-10",
+    "document": "drs.pdf",
+    "question": "What total parameter count is required by the 110-layer deep architecture designed for the CIFAR-10 experiment?",
+    "answerable": true,
+    "expected_page_numbers": [
+      7
+    ],
+    "evidence_phrase": "ResNet 110 1.7M",
+    "notes": "Table 6 parameter count."
+  },
+  {
+    "id": "drs-11",
+    "document": "drs.pdf",
+    "question": "What mean average precision score was achieved on the PASCAL VOC 2012 evaluation set when utilizing the baseline architecture paired with Faster R-CNN?",
+    "answerable": true,
+    "expected_page_numbers": [
+      11
+    ],
+    "evidence_phrase": "baseline ResNet-101 07++12 73.8",
+    "notes": "Table 11 PASCAL VOC result."
+  },
+  {
+    "id": "drs-12",
+    "document": "drs.pdf",
+    "question": "Which specific convolutional feature layer in ResNet-101 is selected to perform Region of Interest pooling during object detection processing?",
+    "answerable": true,
+    "expected_page_numbers": [
+      10
+    ],
+    "evidence_phrase": "is performed before conv5 1",
+    "notes": "Faster R-CNN layer assignment."
+  },
+  {
+    "id": "drs-13",
+    "document": "drs.pdf",
+    "question": "What localization error percentage was reached on ground truth classes when using dense and multi-scale testing on ResNet-101?",
+    "answerable": true,
+    "expected_page_numbers": [
+      12
+    ],
+    "evidence_phrase": "RPN ResNet-101 dense 11.7",
+    "notes": "Table 13 localization error result."
+  },
+  {
+    "id": "drs-14",
+    "document": "drs.pdf",
+    "question": "In the object detection enhancement ablations, how much mAP percentage boost did the inclusion of multi-scale testing yield on COCO validation?",
+    "answerable": true,
+    "expected_page_numbers": [
+      11
+    ],
+    "evidence_phrase": "Multi-scale testing improves the mAP by over 2 points",
+    "notes": "Table 9 component ablation description."
+  },
+  {
+    "id": "drs-15",
+    "document": "drs.pdf",
+    "question": "How many total proposals are extracted per training image to train the region-centric classification network for ImageNet localization?",
+    "answerable": true,
+    "expected_page_numbers": [
+      12
+    ],
+    "evidence_phrase": "highest scored 200 proposals are extracted",
+    "notes": "R-CNN localization proposal count."
+  },
+  {
+    "id": "drs-u01",
+    "document": "drs.pdf",
+    "question": "What total time in days was required to train the 152-layer ResNet model on ImageNet?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Wall-clock training duration for ResNet-152 is omitted."
+  },
+  {
+    "id": "drs-u02",
+    "document": "drs.pdf",
+    "question": "What exact weight decay hyperparameter was selected when fine-tuning the network on COCO segmentation?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Fine-tuning weight decay for COCO segmentation is missing."
+  },
+  {
+    "id": "drs-u03",
+    "document": "drs.pdf",
+    "question": "What peak memory footprint in megabytes did the 1202-layer model consume during backpropagation?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Peak memory consumption is not reported."
+  },
+  {
+    "id": "drs-u04",
+    "document": "drs.pdf",
+    "question": "What specific batch size per GPU was used during the multi-scale testing phase of Faster R-CNN?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Per-GPU testing batch size is missing."
+  },
+  {
+    "id": "drs-u05",
+    "document": "drs.pdf",
+    "question": "What training error percentage did the 152-layer ResNet reach after 300,000 iterations on ImageNet?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Mid-training error rate metrics are omitted."
+  },
+  {
+    "id": "drs-u06",
+    "document": "drs.pdf",
+    "question": "What total energy consumption in kilowatt-hours was measured when training the 1000-layer model on GPUs?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "Energy consumption metrics are absent."
+  },
+  {
+    "id": "drs-u07",
+    "document": "drs.pdf",
+    "question": "What specific non-maximum suppression (NMS) IoU threshold was chosen for region proposal generation in the initial RPN stage?",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null,
+    "notes": "RPN stage NMS threshold is omitted."
+  }
+]

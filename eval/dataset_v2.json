@@ -1,0 +1,18 @@
+[
+  {
+    "id": "v2_example_01",
+    "document": "sample_paper.pdf",
+    "question": "PLACEHOLDER — replace with your real question targeting sample_paper.pdf",
+    "answerable": true,
+    "expected_page_numbers": [1],
+    "evidence_phrase": "attention mechanism"
+  },
+  {
+    "id": "v2_example_02",
+    "document": "sample_paper.pdf",
+    "question": "PLACEHOLDER — an unanswerable question whose answer is not in the document",
+    "answerable": false,
+    "expected_page_numbers": [],
+    "evidence_phrase": null
+  }
+]
