@@ -20,3 +20,9 @@ Date:14-11-2026
 Title:Denoising Diffusion Probabilistic Models
 ID:2006.11239
 Date:14-11-2026
+
+## Allowed pages per paper (fixed before labelling)
+Evidence comes only from the body: no reference lists, no pages of figures only.
+ddpm: pages 1-16 (confirm with the check above).  creatine: pages 1-N (N = last page before References).
+lora, rag, dlrm: pages TBD after the check (before References/appendix tables).
+Unanswerable items are still checked against the WHOLE paper.
