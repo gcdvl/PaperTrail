@@ -1,0 +1,324 @@
+[
+ {
+  "id": "dlrm-01",
+  "document": "dlrm.pdf",
+  "question": "Which deep learning frameworks does the released DLRM code support?",
+  "answerable": true,
+  "expected_page_numbers": [
+   1
+  ],
+  "evidence_phrase": "provide its implementation in both PyTorch and Caffe2 frameworks",
+  "notes": "Abstract: frameworks of the implementation.",
+  "qtype": "other",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-02",
+  "document": "dlrm.pdf",
+  "question": "What kind of representation does an embedding assign to each category of a categorical feature?",
+  "answerable": true,
+  "expected_page_numbers": [
+   2
+  ],
+  "evidence_phrase": "embeddings map each category to a dense representation in an abstract space",
+  "notes": "Sec 2.1.1: what an embedding does.",
+  "qtype": "definition",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-03",
+  "document": "dlrm.pdf",
+  "question": "What degree of feature crossing do factorization machines add to a plain linear predictor?",
+  "answerable": true,
+  "expected_page_numbers": [
+   3
+  ],
+  "evidence_phrase": "incorporate second-order interactions into a linear model",
+  "notes": "Sec 2.1.3: factorization machines.",
+  "qtype": "definition",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-04",
+  "document": "dlrm.pdf",
+  "question": "How does DLRM prepare continuous input features before they interact with the embedded categorical ones?",
+  "answerable": true,
+  "expected_page_numbers": [
+   3
+  ],
+  "evidence_phrase": "continuous features will be transformed by an MLP (which we call the bottom or dense MLP)",
+  "notes": "Sec 2.2: bottom MLP.",
+  "qtype": "method",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-05",
+  "document": "dlrm.pdf",
+  "question": "Between which items does DLRM compute dot products to capture feature interactions?",
+  "answerable": true,
+  "expected_page_numbers": [
+   3
+  ],
+  "evidence_phrase": "taking the dot product between all pairs of embedding vectors and processed dense features",
+  "notes": "Sec 2.2: interaction operator.",
+  "qtype": "method",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-06",
+  "document": "dlrm.pdf",
+  "question": "Why can't the large embedding tables simply be handled with data parallelism?",
+  "answerable": true,
+  "expected_page_numbers": [
+   4
+  ],
+  "evidence_phrase": "The size of the embeddings makes it prohibitive to use data parallelism since it requires replicating large embeddings on every device",
+  "notes": "Sec 3: reason for model parallelism on embeddings.",
+  "qtype": "other",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-07",
+  "document": "dlrm.pdf",
+  "question": "Besides interactions across different feature vectors, which interactions does a Deep and Cross network also generate that DLRM does not?",
+  "answerable": true,
+  "expected_page_numbers": [
+   4
+  ],
+  "evidence_phrase": "also produce cross-terms between elements within the same feature vector",
+  "notes": "Sec 2.3: comparison with Deep and Cross.",
+  "qtype": "comparison",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-08",
+  "document": "dlrm.pdf",
+  "question": "Which Caffe2 operator is used for the fully connected layers of the MLPs in DLRM?",
+  "answerable": true,
+  "expected_page_numbers": [
+   4
+  ],
+  "evidence_phrase": "Caffe2 SparseLengthSum FC BatchMatMul CrossEntropy",
+  "notes": "Table 1 row for Caffe2; answer is FC.",
+  "qtype": "table",
+  "table": true,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-09",
+  "document": "dlrm.pdf",
+  "question": "Which operator carries out the exchange of embedding results among devices in the authors' parallel implementation?",
+  "answerable": true,
+  "expected_page_numbers": [
+   5
+  ],
+  "evidence_phrase": "personalized all-to-all communication is implemented using the butterfly shuffle operator",
+  "notes": "Sec 3: butterfly shuffle.",
+  "qtype": "method",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-10",
+  "document": "dlrm.pdf",
+  "question": "What kinds of datasets does the released implementation supply for experiments?",
+  "answerable": true,
+  "expected_page_numbers": [
+   5
+  ],
+  "evidence_phrase": "supplies three types of data sets: random, synthetic and public data sets",
+  "notes": "Sec 4: random, synthetic, public.",
+  "qtype": "other",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-11",
+  "document": "dlrm.pdf",
+  "question": "What concern about sharing a real dataset motivates generating synthetic categorical indices from distributions?",
+  "answerable": true,
+  "expected_page_numbers": [
+   6
+  ],
+  "evidence_phrase": "we would not like to share it for privacy purposes",
+  "notes": "Sec 4.2: privacy reason.",
+  "qtype": "other",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-12",
+  "document": "dlrm.pdf",
+  "question": "How many numeric and how many categorical fields does each Criteo click-log record have?",
+  "answerable": true,
+  "expected_page_numbers": [
+   7
+  ],
+  "evidence_phrase": "Each data set contains 13 continuous and 26 categorical features",
+  "notes": "Sec 4.3: 13 continuous, 26 categorical.",
+  "qtype": "number",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-13",
+  "document": "dlrm.pdf",
+  "question": "Roughly how many click records does the Kaggle version of the Criteo ad data hold, and over how many days?",
+  "answerable": true,
+  "expected_page_numbers": [
+   7
+  ],
+  "evidence_phrase": "contains approximately 45 million samples over 7 days",
+  "notes": "Sec 4.3: about 45 million samples, 7 days.",
+  "qtype": "number",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-14",
+  "document": "dlrm.pdf",
+  "question": "How many GPUs, and which model, were in the Big Basin server used for the experiments?",
+  "answerable": true,
+  "expected_page_numbers": [
+   7
+  ],
+  "evidence_phrase": "eight Nvidia Tesla V100 16GB GPUs",
+  "notes": "Sec 5: hardware.",
+  "qtype": "number",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-15",
+  "document": "dlrm.pdf",
+  "question": "For the sample model with 8 categorical and 512 continuous features run in Caffe2, how long did it take on a CPU versus a GPU?",
+  "answerable": true,
+  "expected_page_numbers": [
+   8
+  ],
+  "evidence_phrase": "runs in around 256 seconds on the CPU and 62 seconds on the GPU",
+  "notes": "Sec 5.2: 256 s CPU, 62 s GPU.",
+  "qtype": "number",
+  "table": false,
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-u01",
+  "document": "dlrm.pdf",
+  "question": "What learning rate did the authors use for SGD and Adagrad when training DLRM on the Criteo Ad Kaggle data?",
+  "answerable": false,
+  "expected_page_numbers": [],
+  "evidence_phrase": null,
+  "notes": "SGD and Adagrad are named in Sec 5.1 but no learning rate value is given.",
+  "subtype": "a",
+  "search_terms": [
+   "learning rate",
+   "step size",
+   "learning-rate"
+  ],
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-u02",
+  "document": "dlrm.pdf",
+  "question": "What area under the ROC curve did DLRM reach on the Criteo Ad Kaggle dataset?",
+  "answerable": false,
+  "expected_page_numbers": [],
+  "evidence_phrase": null,
+  "notes": "Sec 5.1 reports accuracy curves only; no AUC.",
+  "subtype": "a",
+  "search_terms": [
+   "AUC",
+   "area under the curve",
+   "ROC curve"
+  ],
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-u03",
+  "document": "dlrm.pdf",
+  "question": "What accuracy did DLRM reach on the Criteo Ad Terabyte dataset?",
+  "answerable": false,
+  "expected_page_numbers": [],
+  "evidence_phrase": null,
+  "notes": "Terabyte is described in Sec 4.3; accuracy is evaluated on Kaggle only.",
+  "subtype": "a",
+  "search_terms": [
+   "Terabyte accuracy",
+   "accuracy on the Terabyte",
+   "Terabyte results"
+  ],
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-u04",
+  "document": "dlrm.pdf",
+  "question": "How many rows does each embedding table have in the model trained on the Criteo Ad Kaggle data?",
+  "answerable": false,
+  "expected_page_numbers": [],
+  "evidence_phrase": null,
+  "notes": "Only the embedding dimension (16) is given for the Kaggle models.",
+  "subtype": "a",
+  "search_terms": [
+   "rows per embedding table",
+   "embedding table size",
+   "Kaggle embedding table"
+  ],
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-u05",
+  "document": "dlrm.pdf",
+  "question": "What speedup did the combined model- and data-parallel scheme achieve as more GPUs were added?",
+  "answerable": false,
+  "expected_page_numbers": [],
+  "evidence_phrase": null,
+  "notes": "Sec 3 says its detailed performance study is future work.",
+  "subtype": "a",
+  "search_terms": [
+   "speedup",
+   "scaling efficiency",
+   "strong scaling"
+  ],
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-u06",
+  "document": "dlrm.pdf",
+  "question": "Which recurrent layer does DLRM use to model the order of a user's previous clicks?",
+  "answerable": false,
+  "expected_page_numbers": [],
+  "evidence_phrase": null,
+  "notes": "False premise: DLRM has no recurrent layer.",
+  "subtype": "b",
+  "search_terms": [
+   "LSTM",
+   "recurrent layer",
+   "GRU"
+  ],
+  "drafted_by": "claude"
+ },
+ {
+  "id": "dlrm-u07",
+  "document": "dlrm.pdf",
+  "question": "How many attention heads does the base Transformer use in its encoder?",
+  "answerable": false,
+  "expected_page_numbers": [],
+  "evidence_phrase": null,
+  "notes": "Off-topic: not discussed in this paper.",
+  "subtype": "c",
+  "search_terms": [
+   "attention heads",
+   "multi-head",
+   "encoder"
+  ],
+  "drafted_by": "claude"
+ }
+]
