@@ -178,6 +178,11 @@ tests/test_api_static.py      # Tests for static HTML delivery
 - **Offline Judge**: The Milestone 6 verification engine is an evaluation diagnostic and is not wired into the live API serving path.
 - **Digital PDF Requirement**: Image-only scans without OCR text layers yield empty text (`has_text = False`).
 
+- **The new evaluation set (5 additional papers, 110 items) was drafted with AI assistance and
+verified by the author with a checker that tests evidence phrases against the extracted text.
+There is no second human labeller; a single-labeller consistency check is used instead.
+The set is small and most papers are ML papers, so results carry wide confidence intervals.
+
 ---
 
 ## Tests

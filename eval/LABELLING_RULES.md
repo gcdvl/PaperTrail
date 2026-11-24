@@ -10,8 +10,9 @@ had no written rules, so old and new numbers are not strictly comparable.
 ## Item fields
 Required (same as the old set): id, document, question, answerable,
 expected_page_numbers (1-based), evidence_phrase, notes.
-Optional: qtype (number|definition|method|comparison|table|other),
-subtype (unanswerable only: a|b|c), table (true|false), search_terms (unanswerable only).
+Optional: Optional: qtype (number|definition|method|comparison|table|other),
+subtype (unanswerable only: a|b|c), table (true|false), search_terms (unanswerable only),
+drafted_by (author|gpt-edited|claude).
 IDs: <paper>-01.. for answerable, <paper>-u01.. for unanswerable.
 
 ## Per paper: 15 answerable + 7 unanswerable.
@@ -20,8 +21,11 @@ IDs: <paper>-01.. for answerable, <paper>-u01.. for unanswerable.
 Total set after adding: 8 papers (3 old + 5 new), 66 old + 110 new = 176 items.
 
 ## Answerable
-1. Write the question by reading the paper, not by looking at retrieval output
-   or chunks. Never run PaperTrail on a new paper before it is labelled.
+1. 1. Questions may be drafted with an AI (dlrm: Claude; GPT earlier drafts were replaced). Every
+   question is read against the paper and recorded in "drafted_by". The evidence phrase and the
+   answerable/unanswerable label are always checked with the dump and the checker; an AI's claim
+   that "the paper doesn't say this" is never trusted. Never run PaperTrail on a new paper
+   before it is frozen. Amended 2026-11-24, before any labelling was finished or any system run.
 2. Paraphrase. Do not copy the evidence sentence's wording.
 3. The question must make sense alone (no "in Table 2 of this paper").
 4. evidence_phrase: copy-paste from the extractor text (dump_pages output),
@@ -40,11 +44,13 @@ Subtypes: (a) on-topic but the paper does not state it, (b) false premise
 Before labelling, search the extracted text for 3+ key terms and record them
 in search_terms. If the paper states it anywhere, it is answerable.
 
-## Second labeller (about 20% of items, blind)
-Gets question + PDF only. Returns page + quote, or "not stated" (max 5 minutes
-of searching per item). Report agreement on answerable/unanswerable and on
-page. Disagreements are resolved by discussion; if still unresolved the item is
-REMOVED. All removals happen before freezing.
+## Label consistency check (replaces the second labeller; fixed 2026-11-24)
+No second labeller is available. Instead: at least 7 days after finishing, re-label a
+random 20% of items blind (question + PDF only, without looking at the old labels).
+Report agreement on answerable/unanswerable and on page. This measures consistency of one
+person over time, not agreement between people, and the README says so. Items that
+disagree are removed before freezing. If a classmate or friend later labels a subset,
+report that too, and keep it separate.
 
 ## Freeze
 validator passes -> check_new_set passes -> record SHA-256 -> zip/tag.
