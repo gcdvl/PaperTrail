@@ -17,6 +17,7 @@ IDs: <paper>-01.. for answerable, <paper>-u01.. for unanswerable.
 ## Per paper: 15 answerable + 7 unanswerable.
 ## Size (fixed before labelling, not to be changed after seeing any results)
 5 new papers x (15 answerable + 7 unanswerable) = 75 answerable + 35 unanswerable = 110 items.
+Total set after adding: 8 papers (3 old + 5 new), 66 old + 110 new = 176 items.
 
 ## Answerable
 1. Write the question by reading the paper, not by looking at retrieval output
@@ -50,14 +51,11 @@ validator passes -> check_new_set passes -> record SHA-256 -> zip/tag.
 After freezing: no edits, no removals, no "fixing" items because of results.
 Any later change = a new version file with a written reason.
 
-## Allowed pages per paper (fixed before labelling)
-Evidence comes only from the body: no reference lists, no pages of figures only.
-ddpm: pages 1-16 (confirm with the check above).  creatine: pages 1-18 (N = last page before References).
-lora, rag, dlrm: pages TBD after the check (before References/appendix tables).
-Unanswerable items are still checked against the WHOLE paper.
+
 
 ## Allowed evidence pages (fixed 2026-11-14, before labelling)
 creatine 1-12, ddpm 1-8, dlrm 1-8, lora 1-12, rag 1-9 (pages before the reference list).
 No appendix evidence. Unanswerable items are checked against the WHOLE paper.
+Enforced by eval/new/allowed_pages.json via check_new_set.py --allowed-pages.
 Before labelling a paper, read one body page of its dump in VS Code; if it reads wrongly
 (columns mixed, garbled), stop and tell Claude.
